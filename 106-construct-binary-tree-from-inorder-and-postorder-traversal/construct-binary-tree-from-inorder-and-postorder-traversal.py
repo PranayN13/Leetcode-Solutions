@@ -8,11 +8,11 @@ class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
         if not inorder:
             return
-        mid = postorder.pop()
-        root = TreeNode(mid)
-        i = inorder.index(mid)
-        
-        root.right = self.buildTree(inorder[i+1:],postorder)
-        root.left = self.buildTree(inorder[:i],postorder)
+
+        mid = inorder.index(postorder.pop())
+        root = TreeNode(inorder[mid])
+
+        root.right = self.buildTree(inorder[mid+1:],postorder)
+        root.left = self.buildTree(inorder[:mid],postorder)
         return root
         
