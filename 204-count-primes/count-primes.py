@@ -3,13 +3,13 @@ class Solution:
         if n <= 2:
             return 0
         
-        is_prime = [True] * n
+        prime_number = [True] * n
         
-        is_prime[0] = is_prime[1] = False
+        prime_number[0] = prime_number[1] = False
         
         for i in range(2, int(n**0.5)+1):
-            if is_prime[i]:
+            if prime_number[i]:
                 for j in range(i*i, n, i):
-                    is_prime[j] = False
+                    prime_number[j] = False
         
-        return sum(is_prime)
+        return sum(prime_number)
